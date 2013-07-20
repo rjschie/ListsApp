@@ -1,0 +1,74 @@
+/*
+	RESET
+*/
+* { margin: 0; padding: 0; position: relative; }
+.clear { clear: both; }
+img, a img { border: none; }
+input { outline: none; }
+
+
+/*
+	STRUCTURE
+*/
+body { background: url("../img/stripe.png") #f4f4f4 ; font: 16px/1.2 sans-serif; }
+#header { height: 60px; background: #f59b22; }
+#page-wrap { width: auto; margin: 90px auto; }
+
+
+/*
+	TYPOGRAPHY
+*/
+a  { border-bottom: 1px dashed #35777b; color: #35777b; text-decoration: none; outline: 0; }
+h1 { margin: 0 0 8px 0; font: bold 36px Helvetica, Sans-Serif; }
+h2 { margin: 0 0 10px 0; }
+p  { margin: 0 0 6px 0; }
+
+
+/*
+	FORM ELEMENTS
+*/
+.button { padding: 5px 12px; background: #f59b22; border: 2px solid #f7a41b; border-radius: 2px; color: white; font-size: 16px; font-weight: bold; cursor: pointer; }
+.button:hover { background: #f07926; border-color: #f07926; }
+.button.dark { background: #444; border: 2px solid #555; color: white; }
+.button.dark:hover { background: #f4f4f4; color: #f59b22; }
+
+#add-new { width: 590px; margin: auto;  }
+#add-new input[type="text"] { width: 489px; height: 40px; margin: 7px 0 7px 38px; padding-left: 18px; border: 2px solid #97d1cc; font-size: 16px; }
+#add-new input[type="submit"] { width: 40px; height: 44px; margin-left: -6px; padding: 0; background: #97d1cc; border: 0; border-radius: 0; color: white; font-size: 16px; font-weight: bold; cursor: pointer; }
+#add-new input[type="submit"]:hover { background-color: #35777b; }
+
+
+/*
+	SECTION: HEADER
+*/
+#header .border { position: absolute; top: 60px; height: 10px; width: 100%; background: #444; border: 0; border-top: 2px solid #ececec; }
+#header h1 { position: absolute; top: 50%; left: 50%; width: 152px; height: 50px; text-indent: -9999px; }
+#header h1 a { display: block; border: 0; height: 45px; width: 152px; margin: -22px 0 0 -80px; background: url("../img/logo.png") no-repeat; background-size: auto 50px; }
+#header h1 a:hover { background-position: -156px 0; }
+
+#account { float: right; top: 10px; right: 20px; }
+#account a { top: 10px; margin: 10px; }
+#account a.button { padding: 8px 15px; }
+
+
+/*
+	LISTS
+*/
+.list { width: 590px; margin: auto; list-style: none;  }
+.list li { position: relative; left: 38px; width: 530px; margin: 0 0 7px 0; padding: 0; }
+
+.list li span { display: block; z-index: 95; position: relative; width: auto; padding: 9px 8px 9px 18px; background: #97d1cc; border-radius: 0; color: #0e5473; cursor: move; }
+/*.list li span*/
+
+.deletebutton { display: block; z-index: 90; position: absolute; top: 0; right: -20px; width: 20px; padding: 4px 0 5px 0; background: #c43131; color: white; text-align: center; font-size: 24px; font-weight: bold; cursor: pointer; }
+.deletebutton:hover { background: #ad0a00; }
+.deletebutton.click { right: -30px; width: 30px; }
+
+.donetab { position: absolute; top: -2px; left: -41px; width: 40px; height: 40px; background: url("../img/tickbox.png") no-repeat; cursor: pointer; }
+.donetab:hover { background-position: -40px 0; }
+
+li.crossout { opacity: 0.3;  }
+li.crossout span { color: #000; font-style: italic; text-decoration: line-through; }
+li.crossout div.donetab { background-position: -40px 0; }
+li.crossout div.donetab:hover { background-position: 0 0; }
+
