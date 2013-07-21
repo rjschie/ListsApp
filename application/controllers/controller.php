@@ -32,6 +32,9 @@ class Controller
 
 	public function __destruct()
 	{
+
+		// TODO add if statement checking for a (new) variable that determines if this goes to AJAX
+			// Then use this if not
 //		try {
 //			$this->_template->output();
 //		} catch ( Exception $e ) {

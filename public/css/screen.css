@@ -33,7 +33,7 @@ p  { margin: 0 0 6px 0; }
 .button.dark:hover { background: #f4f4f4; color: #f59b22; }
 
 #add-new { width: 590px; margin: auto;  }
-#add-new input[type="text"] { width: 489px; height: 40px; margin: 7px 0 7px 38px; padding-left: 18px; border: 2px solid #97d1cc; font-size: 16px; }
+#add-new input[type="text"] { width: 468px; height: 40px; margin: 7px 0 7px 38px; padding-left: 40px; border: 2px solid #97d1cc; font-size: 16px; }
 #add-new input[type="submit"] { width: 40px; height: 44px; margin-left: -6px; padding: 0; background: #97d1cc; border: 0; border-radius: 0; color: white; font-size: 16px; font-weight: bold; cursor: pointer; }
 #add-new input[type="submit"]:hover { background-color: #35777b; }
 
@@ -57,18 +57,21 @@ p  { margin: 0 0 6px 0; }
 .list { width: 590px; margin: auto; list-style: none;  }
 .list li { position: relative; left: 38px; width: 530px; margin: 0 0 7px 0; padding: 0; }
 
-.list li span { display: block; z-index: 95; position: relative; width: auto; padding: 9px 8px 9px 18px; background: #97d1cc; border-radius: 0; color: #0e5473; cursor: move; }
-/*.list li span*/
+.list li span { display: block; z-index: 95; position: relative; width: auto; padding: 9px 8px 9px 40px; background: #97d1cc; color: #0e5473; }
 
-.deletebutton { display: block; z-index: 90; position: absolute; top: 0; right: -20px; width: 20px; padding: 4px 0 5px 0; background: #c43131; color: white; text-align: center; font-size: 24px; font-weight: bold; cursor: pointer; }
-.deletebutton:hover { background: #ad0a00; }
-.deletebutton.click { right: -30px; width: 30px; }
+.delete { display: block; z-index: 90; position: absolute; top: 0; right: -20px; width: 20px; padding: 4px 0 5px 0; background: #c43131; color: white; text-align: center; font-size: 24px; font-weight: bold; cursor: pointer; }
+.delete:hover { background: #ad0a00; }
+.delete.click { right: -30px; width: 30px; }
 
-.donetab { position: absolute; top: -2px; left: -41px; width: 40px; height: 40px; background: url("../img/tickbox.png") no-repeat; cursor: pointer; }
-.donetab:hover { background-position: -40px 0; }
+.done { position: absolute; top: -2px; left: -41px; width: 40px; height: 40px; background: url("../img/tickbox.png") no-repeat; cursor: pointer; }
+.done:hover { background-position: -40px 0; }
+
+.dragger { z-index: 95; position: absolute; top: 9px; left: 5px; width: 30px; height: 20px; background: url("../img/dragger.png") no-repeat; cursor: move; }
+
+/* TODO add clear input part for text input */
 
 li.crossout { opacity: 0.3;  }
 li.crossout span { color: #000; font-style: italic; text-decoration: line-through; }
-li.crossout div.donetab { background-position: -40px 0; }
-li.crossout div.donetab:hover { background-position: 0 0; }
+li.crossout div.done { background-position: -40px 0; }
+li.crossout div.done:hover { background-position: 0 0; }
 

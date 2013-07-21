@@ -1,0 +1,10 @@
+Changelog
+========================
+v0.7
+- add/delete items
+
+v0.8
+- site re-design
+
+v0.9
+- re-order list items

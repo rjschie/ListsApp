@@ -1,61 +1,39 @@
 
+=====================================
+          README - for me
+=====================================
+
+
 
 TODO
 ===================
 	clean up form entries (htmlspecialchars)
 	user input checking
-	Add undo delete ability
-	Put JS at bottom
-	for mysql use being transaction
+	Add undo delete ability?
++	Put JS at bottom
+	for mysql use begin transaction
 
-	Break our code!
+	Break our code! Test the crap out of it!
 		- database errors
 		- user input bad
 		- No javascript?
 		- Go to locations you're not supposed to (e.g. lists/add or lists/delete)
 
 	Make it no-javascript runnable
+	Make it no-css runnable
 
 
-
-
-
-Features
+Features List
 ====================
-v0.5
-One List
-	- add/delete/edit items
-	- re-order items
++ re-order items
 
-v0.8
-Multi-lists
-	- add/delete/edit lists
-	- re-order lists?
-	- change colors
-	- public lists
+- user accounts
+- login/logout/register
+- change password
 
-v1.0
-	- user accounts
-	- login/logout/register
-	- change password
+- add/delete/edit lists
+- re-order lists?
+- change colors
+- public lists
 
-
-
-
-URL to Page Index
-====================
-
-Main Page
-	-> /index
-
-Add Item
-	-> /index/add
-
-Edit Item
-	-> /index/edit
-
-Delete Item
-	-> /index/delete
-
-Re-order Item
-	-> /index/reorder
+- mobile viewable/workable

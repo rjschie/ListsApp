@@ -26,7 +26,7 @@ $controller .= 'Controller';
 $load = new $controller($modelName, $action);
 
 if( method_exists( $load, $action ) ) {
-	call_user_func_array( array( $load, $action ), $query );
+	call_user_func_array( array( $load, $action ), array($query) );
 } else {
 	die( 'Invalid method. Please check URL.' );
 }

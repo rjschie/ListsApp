@@ -2,6 +2,9 @@
 
 class ListModel extends Model
 {
+
+	// TODO Error Check: use returns for PDO Execute for error checking
+
 	public function getList()
 	{
 		$this->_sql = "
@@ -30,12 +33,33 @@ class ListModel extends Model
 		//
 	}
 
+	public function updateOrder( $orderArr )
+	{
+		$this->_sql = "UPDATE listitems SET pos = CASE ";
+		for($i = 0; $i < count($orderArr); $i++)
+			$this->_sql .= "WHEN id=? THEN ".$i." ";
+		$this->_sql .= " ELSE pos END;";
+
+		$sth = $this->_db->prepare( $this->_sql );
+		$sth->execute( $orderArr );
+	}
+
+	public function markDone( $id )
+	{
+		$this->_sql = "UPDATE listitems
+					   SET done = NOT `done`
+					   WHERE id=:id";
+
+		$sth = $this->_db->prepare( $this->_sql );
+		return $sth->execute( array( "id" => $id ) );
+	}
+
 	public function deleteListItem( $id )
 	{
 		$this->_sql = "DELETE FROM listitems
 					   WHERE id = ?";
 		$sth = $this->_db->prepare( $this->_sql );
-		$sth->execute( array( $id ) );
+		return $sth->execute( array( $id ) );
 	}
 
 }

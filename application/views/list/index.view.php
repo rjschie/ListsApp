@@ -10,7 +10,9 @@
 		<ul id="edit-list" class="list">
 			<?php foreach($List as $ListItem): ?>
 
-				<li id="<?php echo $ListItem->id; ?>" rel="<?php echo $ListItem->pos; ?>" class=""><span id="<?php echo $ListItem->id; ?>"><?php echo $ListItem->text; ?></span></li>
+				<?php $done = ($ListItem->done) ? 'crossout' : ''; ?>
+
+				<li id="<?php echo $ListItem->id; ?>" rel="<?php echo $ListItem->pos; ?>" class="<?php echo $done; ?>"><span id="<?php echo $ListItem->id; ?>"><?php echo $ListItem->text; ?></span></li>
 				<?php $newPosVal = $ListItem->pos + 1; ?>
 
 			<?php endforeach; ?>

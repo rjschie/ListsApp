@@ -3,38 +3,45 @@ $(function() {
 
 	/** UI STUFF **/
 
-	var appendTabs = "<div class='deletebutton'>-</div><div class='donetab'></div>";
+	var appendTabs = "<div class='delete'>-</div><div class='done'></div><div class='dragger'></div>";
 	var editList = $("#edit-list");
 
+
 	// Apend UI stuff to each <li>
-	$('#edit-list li').append(appendTabs);    // TODO
+	$('#edit-list li').append(appendTabs);
+
 
 	// Mark as done
-	editList.on('click', '.donetab', function() {
-		// If not crossed out
-		if(!$(this).parent().hasClass("crossout")) {
-			$(this).siblings(".strikethrough").css({width: "0px"});
-			$(this).parent().addClass("crossout");
-			$(this).siblings(".strikethrough").animate({width: "613px"}, 300);
-
-			// TODO implement "done" update on database
-
-		} else {
-			$(this).parent().removeClass("crossout");
-
-			// TODO implement "done" update on database
-
-		}
+	editList.on('click', '.done', function() {
+		thisLI = $(this).parent();
+		$.ajax({
+			url     :   "list/update/done",
+			type    :   "POST",
+			data    :   "id=" + thisLI.attr("id")
+		}).done(function( response ){
+			if(!thisLI.hasClass("crossout")) {
+				thisLI.addClass("crossout");
+			} else {
+				thisLI.removeClass("crossout");
+			}
+		});
 	});
+
 
 	// Make the list sortable
 	$('#edit-list').sortable({
-		handle	:	'span',
+		handle	:	'.dragger',
 		update	:	function(event, ui) {
-			// TODO Save list order to database
+			postData = $("#edit-list").sortable("serialize", {key : "id[]",expression : "(.+)"});
+			$.ajax({
+				url     :   "list/update/order",
+				type    :   "POST",
+				data    :   postData
+			});
 		},
 		forcePlaceholderSize: true
 	});
+
 
 
 
@@ -49,8 +56,7 @@ $(function() {
 			type    :   "POST",
 			data    :   "new-list-item-text=" + newListItemText + "&new-list-item-pos=" + newPosVal
 		}).done(function( response ){
-			$("#edit-list").append("<li id='" + response + "' rel='" + newPosVal + "' class='colorBlue'><span id='" + response + "'>" + newListItemText + "</span>" + appendTabs);
-//			$("#edit-list").append("<li id='5' rel='" + newPosVal + "' class='colorBlue'><span id='5'>" + newListItemText + "</span>" + appendTabs);
+			$("#edit-list").append("<li id='" + response + "' rel='" + newPosVal + "' class=''><span id='" + response + "'>" + newListItemText + "</span>" + appendTabs);
 			$("#new-list-item-text").val("");
 			$("#new-list-item-pos").val(newPosVal + 1);
 		});
@@ -59,13 +65,12 @@ $(function() {
 
 
 	// Edit a list item
-		// TODO
+		// TODO Edit list item function
 
 
 
 	// Show the delete button
-		// TODO implement second click delete
-	editList.on("click", ".deletebutton", function() {
+	editList.on("click", ".delete", function() {
 		el = $(this);
 		if(el.hasClass("click")) {
 			var row = $(this).parent();
@@ -84,8 +89,9 @@ $(function() {
 		}
 	});
 
+
 	// Hide the delete button
-	editList.on("mouseout", ".deletebutton", function() {
+	editList.on("mouseout", ".delete", function() {
 		el = $(this);
 		if(el.hasClass("click")){
 			el.removeClass("click").html("-");
@@ -93,17 +99,4 @@ $(function() {
 	});
 
 
-	// DEPRECATED Function  -  Delete a list item
-//	$("#edit-list").on('click', '.deletebutton', function() {
-//		var row = $(this).parent();
-//		$.ajax({
-//			url    :  "list/delete",
-//			type   :  "POST",
-//			data   :  "id=" + $(row).attr("id")
-//		}).done( function() {
-//			curVal = $("#new-list-item-pos").val() - 1;
-//			$("#new-list-item-pos").val( curVal );
-//			$(row).remove();
-//		});
-//	});
 });

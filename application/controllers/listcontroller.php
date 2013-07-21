@@ -24,7 +24,7 @@ class ListController extends Controller
 	{
 		try {
 
-			// TODO Add Checks here for correct $_POST variables
+			// TODO User Input Checks: Add Checks here for correct $_POST variables
 
 			$listItemArr = array(
 				"text"      => $_POST['new-list-item-text'],
@@ -34,6 +34,23 @@ class ListController extends Controller
 			$this->_template->output($return);
 		} catch(Exception $e) {
 			echo "Application Error: " . $e->getMessage();
+		}
+	}
+
+	public function update( $query )
+	{
+		if($query[0] == "done") {
+			try {
+				$this->_model->markDone( $_POST['id'] );
+			} catch(Exception $e) {
+				echo "Application Error: " . $e->getMessage();
+			}
+		} elseif($query[0] == "order") {
+			try {
+				$this->_model->updateOrder( $_POST['id'] );
+			} catch(Exception $e) {
+				echo "Application Error: " . $e->getMessage();
+			}
 		}
 	}
 

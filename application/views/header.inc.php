@@ -13,18 +13,21 @@
 
 <!--	<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />-->
 	<link rel="stylesheet" href="<?php echo PUBLIC_HTML; ?>css/screen.css" type="text/css" media="screen,projection" />
-	<link rel="stylesheet" href="<?php echo PUBLIC_HTML; ?>css/new.css" type="text/css" media="screen,projection" />
 
 </head>
 
 <body lang="en-US">
 <div id="header">
-	<h1><a href="./">Lists App</a></h1>
+	<h1><a href="./list">Lists App</a></h1>
 	<div id="account">
 <!--		<p><a href="><?php //echo PUBLIC_HTML; ?>account/logout" class="button dark">Log Out</a> <a href="><?php //echo PUBLIC_HTML; ?>account" class="button dark">My Account</a></p>-->
 	    <p><a href="<?php echo PUBLIC_HTML; ?>account/register" class="button dark">Sign Up</a> <a href="<?php echo PUBLIC_HTML; ?>account/login" class="button dark">Log In</a></p>
 	</div>
 	<div class="border"></div>
+</div>
+
+<div id="error">
+
 </div>
 
 <div id="page-wrap">
