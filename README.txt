@@ -26,6 +26,7 @@ TODO
 Features List
 ====================
 + re-order items
+- edit list item text
 
 - user accounts
 - login/logout/register

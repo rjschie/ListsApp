@@ -7,6 +7,11 @@ img, a img { border: none; }
 input { outline: none; }
 
 
+
+.hide {
+	display: none;
+}
+
 /*
 	STRUCTURE
 */
@@ -41,10 +46,15 @@ p  { margin: 0 0 6px 0; }
 /*
 	SECTION: HEADER
 */
-#header .border { position: absolute; top: 60px; height: 10px; width: 100%; background: #444; border: 0; border-top: 2px solid #ececec; }
+/*#header { text-align: center; }*/
+#header .border { position: absolute; bottom: -12px; height: 10px; width: 100%; background: #444; border: 0; border-top: 2px solid #ececec; }
 #header h1 { position: absolute; top: 50%; left: 50%; width: 152px; height: 50px; text-indent: -9999px; }
 #header h1 a { display: block; border: 0; height: 45px; width: 152px; margin: -22px 0 0 -80px; background: url("../img/logo.png") no-repeat; background-size: auto 50px; }
 #header h1 a:hover { background-position: -156px 0; }
+
+/** Delete this section after alpha **/
+#header { height: 70px; }
+#header p { position: absolute; bottom: 0; width: 100%;  margin: auto; color: white; text-align: center; }
 
 #account { float: right; top: 10px; right: 20px; }
 #account a { top: 10px; margin: 10px; }
@@ -54,6 +64,8 @@ p  { margin: 0 0 6px 0; }
 /*
 	LISTS
 */
+#no-list { left: 38px; width: 590px; margin: 30px auto; color: #0e5473; font-size: 1.3em; font-weight: bold; }
+
 .list { width: 590px; margin: auto; list-style: none;  }
 .list li { position: relative; left: 38px; width: 530px; margin: 0 0 7px 0; padding: 0; }
 

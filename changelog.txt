@@ -1,10 +1,35 @@
 Changelog
 ========================
-v0.7
-- add/delete items
 
-v0.8
-- site re-design
 
-v0.9
-- re-order list items
+
+v0.9    - 07/20/2013
+==================================
+	Features
+	-------------
+		- re-order list items
+
+	Misc
+	-------------
+		- Now the jquery includes are in the site, not remote
+		- Added "Your list is empty. Start by adding items." whenever
+			your list goes empty. It disappears when you fill it.
+		- Added db_build.sql file to build a template database
+		- Added "(alpha)" text to site header and title
+
+
+
+v0.8    - 07/19/2013
+==================================
+	Features
+	-------------
+		- site re-design
+
+
+
+v0.7    - 07/18/2013
+==================================
+	Features
+	-------------
+		- add/delete items
+

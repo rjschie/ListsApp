@@ -5,9 +5,10 @@
 <!--			<small>(Nobody but YOU will be able to edit this list)</small></p>-->
 <!--	</div>-->
 
-	<?php $newPosVal = null; ?>
-	<?php if($List): ?>
-		<ul id="edit-list" class="list">
+	<?php $newPosVal = null; $listQ = ($List) ? 'hide' : ''; ?>
+
+	<ul id="edit-list" class="list">
+		<?php if($List): ?>
 			<?php foreach($List as $ListItem): ?>
 
 				<?php $done = ($ListItem->done) ? 'crossout' : ''; ?>
@@ -16,10 +17,9 @@
 				<?php $newPosVal = $ListItem->pos + 1; ?>
 
 			<?php endforeach; ?>
-		</ul>
-	<?php else: ?>
-		<p>There is nothing in this list.</p>
-	<?php endif; ?>
+		<?php endif; ?>
+	</ul>
+	<p id="no-list" class="<?php echo $listQ; ?>">Your list is empty. Start by adding items.</p>
 
 	<form action="list/add" method="post" id="add-new">
 		<div>

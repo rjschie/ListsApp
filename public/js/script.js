@@ -1,15 +1,27 @@
 $(function() {
 
 
+
+	/** Functions **/
+	function noListCheck(obj)
+	{
+		if( obj.children().length > 0 ) {
+			$("#no-list").addClass("hide");
+		} else {
+			$("#no-list").removeClass("hide");
+		}
+	}
+
+
 	/** UI STUFF **/
 
 	var appendTabs = "<div class='delete'>-</div><div class='done'></div><div class='dragger'></div>";
 	var editList = $("#edit-list");
 
 
-	// Apend UI stuff to each <li>
+	// Set up UI
 	$('#edit-list li').append(appendTabs);
-
+	noListCheck(editList);
 
 	// Mark as done
 	editList.on('click', '.done', function() {
@@ -59,6 +71,7 @@ $(function() {
 			$("#edit-list").append("<li id='" + response + "' rel='" + newPosVal + "' class=''><span id='" + response + "'>" + newListItemText + "</span>" + appendTabs);
 			$("#new-list-item-text").val("");
 			$("#new-list-item-pos").val(newPosVal + 1);
+			noListCheck(editList);
 		});
 		return false;
 	});
@@ -83,6 +96,7 @@ $(function() {
 				curVal = itemPos.val() - 1;
 					itemPos.val( curVal );
 				$(row).remove();
+				noListCheck(editList);
 			});
 		} else {
 			el.addClass("click").html("?");
