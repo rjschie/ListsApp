@@ -10,7 +10,6 @@ class IndexController extends Controller
 
 	public function index()
 	{
-		$this->_template->title = "";
 		$this->_template->output();
 	}
 }

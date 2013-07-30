@@ -37,10 +37,10 @@ p  { margin: 0 0 6px 0; }
 .button.dark { background: #444; border: 2px solid #555; color: white; }
 .button.dark:hover { background: #f4f4f4; color: #f59b22; }
 
-#add-new { width: 590px; margin: auto;  }
-#add-new input[type="text"] { width: 468px; height: 40px; margin: 7px 0 7px 38px; padding-left: 40px; border: 2px solid #97d1cc; font-size: 16px; }
-#add-new input[type="submit"] { width: 40px; height: 44px; margin-left: -6px; padding: 0; background: #97d1cc; border: 0; border-radius: 0; color: white; font-size: 16px; font-weight: bold; cursor: pointer; }
-#add-new input[type="submit"]:hover { background-color: #35777b; }
+#form-add-new { width: 590px; margin: auto;  }
+#form-add-new input[type="text"] { width: 468px; height: 40px; margin: 7px 0 7px 38px; padding-left: 40px; border: 2px solid #97d1cc; font-size: 16px; }
+#form-add-new input[type="submit"] { width: 40px; height: 44px; margin-left: -6px; padding: 0; background: #97d1cc; border: 0; border-radius: 0; color: white; font-size: 16px; font-weight: bold; cursor: pointer; }
+#form-add-new input[type="submit"]:hover { background-color: #35777b; }
 
 
 /*
@@ -64,7 +64,7 @@ p  { margin: 0 0 6px 0; }
 /*
 	LISTS
 */
-#no-list { left: 38px; width: 590px; margin: 30px auto; color: #0e5473; font-size: 1.3em; font-weight: bold; }
+.message { left: 38px; width: 590px; margin: 30px auto; color: #0e5473; font-size: 1.3em; font-weight: bold; }
 
 .list { width: 590px; margin: auto; list-style: none;  }
 .list li { position: relative; left: 38px; width: 530px; margin: 0 0 7px 0; padding: 0; }
@@ -87,3 +87,37 @@ li.crossout span { color: #000; font-style: italic; text-decoration: line-throug
 li.crossout div.done { background-position: -40px 0; }
 li.crossout div.done:hover { background-position: 0 0; }
 
+
+/*
+	NOTIFIER
+*/
+.notifier {
+	/*display: none;*/
+	z-index: 120;
+	position: fixed;
+	top: 100px;
+	right: -2px;
+	max-width: 320px;
+}
+.notifier p {
+	padding: 10px 20px;
+	background: #edda5b;
+	border: 2px solid #376578;
+	color: black;
+	line-height: 20px;
+	text-align: center;
+	word-wrap: break-word;
+	cursor: pointer;
+	opacity: 0.8;
+}
+.notifier p:hover {
+	opacity: 1;
+}
+.notifier p:after {
+	content: '(click to dismiss)';
+	display: block;
+	color: #555;
+	font-size: 0.6em;
+	text-align: left;
+}
+.notifier p.error { background-color: #e18b8b; }

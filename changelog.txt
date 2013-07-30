@@ -3,33 +3,37 @@ Changelog
 
 
 
-v0.9    - 07/20/2013
-==================================
-	Features
-	-------------
-		- re-order list items
+7/29/2013
+---------
+- Added CSRF tokens
 
-	Misc
-	-------------
-		- Now the jquery includes are in the site, not remote
-		- Added "Your list is empty. Start by adding items." whenever
-			your list goes empty. It disappears when you fill it.
-		- Added db_build.sql file to build a template database
-		- Added "(alpha)" text to site header and title
-
-
-
-v0.8    - 07/19/2013
-==================================
-	Features
-	-------------
-		- site re-design
+7/28/2013
+---------
+- Added Utilities class: "Utils", houses static functions to use
+	for random purposes
+- Added user input check for adding list items
+- Moved all error checking to PHP script, sends results to JS
+	to put into DOM
+- Moved "newPos" finder to the controller so it's in our control
+- Added error messages for AJAX calls
+- Cleaned up any outputs from database (untrusted user inputs)
 
 
+07/20/2013 - v0.9
+=================
++ re-order list items
+- Now the jquery includes are in the site, not in my repository
+- Added "Your list is empty. Start by adding items." whenever
+	your list goes empty. It disappears when you fill it.
+- Added db_build.sql file to build a template database
+- Added "(alpha)" text to site header and title
 
-v0.7    - 07/18/2013
-==================================
-	Features
-	-------------
-		- add/delete items
 
+07/19/2013 - v0.8
+=================
++ site re-design
+
+
+07/18/2013 - v0.7
+=================
++ add/delete items

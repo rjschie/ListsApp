@@ -3,16 +3,16 @@
 class Controller
 {
 	protected $_model;
-	protected $_controller;
-	protected $_action;
 	protected $_template;
-	protected $_modelBaseName;
+	protected $_modelName;
+	protected $_controllerName;
+	protected $_action;
 
 	public function __construct( $model, $action )
 	{
-		$this->_controller = ucwords( __CLASS__ );
+		$this->_controllerName = ucwords( __CLASS__ );
 		$this->_action = $action;
-		$this->_modelBaseName = $model;
+		$this->_modelName = $model;
 
 		$this->_setTemplate( $action );
 	}
@@ -23,22 +23,20 @@ class Controller
 		$this->_model = new $modelName();
 	}
 
-	protected function _setTemplate( $viewName )
+	protected function _setTemplate( $action )
 	{
 		$this->_template = new Template(
-			APP . DS . 'views' . DS . strtolower( $this->_modelBaseName ) . DS . $viewName . '.view.php'
+			APP . '/views/' . strtolower( $this->_modelName ) . '/' . $action . '.v.php'
 		);
 	}
 
-	public function __destruct()
+	protected function _isAjax( $action )
 	{
+		$headers = apache_request_headers();
+		if( !isset($headers['X-CSRF-Token']) || empty($headers['X-CSRF-Token']) ) {
+			return false;
+		}
 
-		// TODO add if statement checking for a (new) variable that determines if this goes to AJAX
-			// Then use this if not
-//		try {
-//			$this->_template->output();
-//		} catch ( Exception $e ) {
-//			die( "Application Error: " . $e->getMessage() );
-//		}
+		return Utils::verifyCSRFToken( $headers['X-CSRF-Token'], $action );
 	}
 }

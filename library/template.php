@@ -20,30 +20,26 @@ class Template
 		$this->_data[$key];
 	}
 
-	public function returnData( $data )
+	// TODO Fix this area
+	public function output($data = null)
 	{
 
-	}
-
-	public function output($data = false)
-	{
-
-		if( $data ) {
+		if( !empty($data) ) {
 			echo $data;
 			return;
 		}
 
-		if(!file_exists($this->_file))
+		if( !file_exists($this->_file) )
 		{
-			throw new Exception("Template \"" . $this->_file . "\" doesn't exist.");
+			throw new Exception("Template File: \"" . $this->_file . "\" doesn't exist.");
 		}
 
 		extract($this->_data);
 		unset($this->_data);
 
-		include(APP . DS . 'views' . DS . 'header.inc.php');
-		include($this->_file);
-		include(APP . DS . 'views' . DS . 'footer.inc.php');
+		include_once( APP . '/views/' . 'header.v.php' );
+		include_once( $this->_file );
+		include_once( APP . '/views/' . 'footer.v.php' );
 	}
 
 }

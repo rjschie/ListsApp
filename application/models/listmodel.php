@@ -3,7 +3,11 @@
 class ListModel extends Model
 {
 
-	// TODO Error Check: use returns for PDO Execute for error checking
+	public function getNumRows()
+	{
+		$this->_sql = "SELECT id FROM listitems";
+		return $this->getRowCount();
+	}
 
 	public function getList()
 	{
@@ -21,16 +25,13 @@ class ListModel extends Model
 	public function addListItem( $listItemArr )
 	{
 		$this->_sql = "INSERT INTO listitems (list_id, text, done, pos)
-					   VALUES (1, :text, 0, :newPos)";
+					   VALUES (1, :text, 0, :newPos);
+					   INSERT INTO listitems2 (list_id, text, done, pos)
+					   VALUES (1, :text, 0, :newPos);";
 
 		$sth = $this->_db->prepare( $this->_sql );
 		$sth->execute( $listItemArr );
 		return $this->_db->lastInsertId();
-	}
-
-	public function editListItem( $id, $text )
-	{
-		//
 	}
 
 	public function updateOrder( $orderArr )
@@ -42,6 +43,7 @@ class ListModel extends Model
 
 		$sth = $this->_db->prepare( $this->_sql );
 		$sth->execute( $orderArr );
+		return $sth->rowCount();
 	}
 
 	public function markDone( $id )
@@ -51,7 +53,8 @@ class ListModel extends Model
 					   WHERE id=:id";
 
 		$sth = $this->_db->prepare( $this->_sql );
-		return $sth->execute( array( "id" => $id ) );
+		$sth->execute( array( "id" => $id ) );
+		return $sth->rowCount();
 	}
 
 	public function deleteListItem( $id )
@@ -59,7 +62,8 @@ class ListModel extends Model
 		$this->_sql = "DELETE FROM listitems
 					   WHERE id = ?";
 		$sth = $this->_db->prepare( $this->_sql );
-		return $sth->execute( array( $id ) );
+		$sth->execute( array( $id ) );
+		return $sth->rowCount();
 	}
 
 }

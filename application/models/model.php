@@ -10,11 +10,11 @@ class Model
 		$this->_db = DB::init();
 	}
 
+	// TODO use this as an "execute" function
 	public function getRowCount( $data = null )
 	{
-		if( !$this->_sql ) {
+		if( !$this->_sql )
 			throw new Exception("No SQL Query.");
-		}
 
 		$sth = $this->_db->prepare( $this->_sql );
 		$sth->execute( $data );
@@ -23,9 +23,8 @@ class Model
 
 	public function getAll( $data = null )
 	{
-		if( !$this->_sql ) {
+		if( !$this->_sql )
 			throw new Exception("No SQL Query.");
-		}
 
 		$sth = $this->_db->prepare( $this->_sql );
 		$sth->execute( $data );
@@ -34,9 +33,8 @@ class Model
 
 	public function getRow( $data = null )
 	{
-		if( !$this->_sql ) {
+		if( !$this->_sql )
 			throw new Exception("No SQL Query.");
-		}
 
 		$sth = $this->_db->prepare( $this->_sql );
 		$sth->execute( $data );

@@ -1,8 +1,12 @@
 $(function() {
 
 
+	/** Global Vars **/
+	var csrf_token = $("#csrf_token").val();
+
 
 	/** Functions **/
+
 	function noListCheck(obj)
 	{
 		if( obj.children().length > 0 ) {
@@ -12,97 +16,38 @@ $(function() {
 		}
 	}
 
+	function notifier(msg, type)
+	{
+		var notifier = $("#notifier");
+		var typeClass = "";
+		if(type == "error") {
+			typeClass = "error";
+		}
+
+		notifier.show();
+		notifier.prepend("<p class='"+typeClass+"'>"+msg+"</p>");
+
+		// The :gt() selector must be one less than the number you want...
+		// so :gt(4) leaves 5 messages showing.
+		notifier.children(":gt(4)").fadeOut({always:function(){$(this).remove();}});
+	}
+
+
+
 
 	/** UI STUFF **/
 
 	var appendTabs = "<div class='delete'>-</div><div class='done'></div><div class='dragger'></div>";
 	var editList = $("#edit-list");
 
-
-	// Set up UI
+	// Initialize UI
 	$('#edit-list li').append(appendTabs);
-	noListCheck(editList);
+	$('#form-add-new').removeClass("hide");
 
-	// Mark as done
-	editList.on('click', '.done', function() {
-		thisLI = $(this).parent();
-		$.ajax({
-			url     :   "list/update/done",
-			type    :   "POST",
-			data    :   "id=" + thisLI.attr("id")
-		}).done(function( response ){
-			if(!thisLI.hasClass("crossout")) {
-				thisLI.addClass("crossout");
-			} else {
-				thisLI.removeClass("crossout");
-			}
-		});
+	// On notifier message click - close
+	$("#notifier").on('click', 'p', function() {
+		$(this).fadeOut({always:function(){$(this).remove();}});
 	});
-
-
-	// Make the list sortable
-	$('#edit-list').sortable({
-		handle	:	'.dragger',
-		update	:	function(event, ui) {
-			postData = $("#edit-list").sortable("serialize", {key : "id[]",expression : "(.+)"});
-			$.ajax({
-				url     :   "list/update/order",
-				type    :   "POST",
-				data    :   postData
-			});
-		},
-		forcePlaceholderSize: true
-	});
-
-
-
-
-	/** FUNCTIONALITY **/
-
-	// Add a new list item
-	$("#add-new").submit(function(){
-		newListItemText = $("#new-list-item-text").val();
-		newPosVal = parseInt($("#new-list-item-pos").val());
-		$.ajax({
-			url     :   "list/add",
-			type    :   "POST",
-			data    :   "new-list-item-text=" + newListItemText + "&new-list-item-pos=" + newPosVal
-		}).done(function( response ){
-			$("#edit-list").append("<li id='" + response + "' rel='" + newPosVal + "' class=''><span id='" + response + "'>" + newListItemText + "</span>" + appendTabs);
-			$("#new-list-item-text").val("");
-			$("#new-list-item-pos").val(newPosVal + 1);
-			noListCheck(editList);
-		});
-		return false;
-	});
-
-
-	// Edit a list item
-		// TODO Edit list item function
-
-
-
-	// Show the delete button
-	editList.on("click", ".delete", function() {
-		el = $(this);
-		if(el.hasClass("click")) {
-			var row = $(this).parent();
-			$.ajax({
-				url    :  "list/delete",
-				type   :  "POST",
-				data   :  "id=" + $(row).attr("id")
-			}).done( function() {
-				itemPos = $("#new-list-item-pos");
-				curVal = itemPos.val() - 1;
-					itemPos.val( curVal );
-				$(row).remove();
-				noListCheck(editList);
-			});
-		} else {
-			el.addClass("click").html("?");
-		}
-	});
-
 
 	// Hide the delete button
 	editList.on("mouseout", ".delete", function() {
@@ -112,5 +57,103 @@ $(function() {
 		}
 	});
 
+
+
+
+	/** FUNCTIONALITY **/
+
+	// Bind AJAX Sends with our CSRF Token
+	$(document).ajaxSend(function(event, xhr, settings) {
+		xhr.setRequestHeader("X-CSRF-Token", csrf_token);
+	});
+
+
+	// Mark as done
+	editList.on('click', '.done', function() {
+		thisLI = $(this).parent();
+		$.ajax({
+			url     :   "list/update/done",
+			type    :   "POST",
+			context :   thisLI,
+			data    :   "id=" + thisLI.attr("id")
+		}).done(function( response ){                   // Response is error message
+			if(!response) {
+				if(!$(this).hasClass("crossout")) {
+					$(this).addClass("crossout");
+				} else {
+					$(this).removeClass("crossout");
+				}
+			} else {
+				notifier(response, "error");
+			}
+		});
+	});
+
+
+	// Make the list sortable
+	editList.sortable({
+		handle	:	'.dragger',
+		update	:	function() {
+			postData = editList.sortable("serialize", {key : "id[]",expression : "(.+)"});
+			$.ajax({
+				url     :   "list/update/order",
+				type    :   "POST",
+				data    :   postData
+			}).done(function(response) {
+				if(response) {
+					notifier( response, "error" );
+					editList.sortable("cancel");
+				}
+			});
+		},
+		forcePlaceholderSize: true
+	});
+
+
+	// Add a new list item
+	$("#form-add-new").submit(function(){
+		var thisInput = $("#add-new-item-text");
+		$.ajax({
+			url     :   "list/add",
+			type    :   "POST",
+			data    :   "add-new-item-text=" +  thisInput.val()
+		}).done(function( response ){
+
+			var data = $.parseJSON( response );
+			if( data.err == 0 ) {
+				editList.append("<li id='" + data.id + "' rel='" + data.newPos + "' class=''><span id='" + data.id + "'>" + data.text + "</span>" + appendTabs);
+				thisInput.val("");
+				noListCheck(editList);
+		    } else {
+				notifier( data.message, "error" );
+			}
+		});
+		return false;
+	});
+
+
+	// On first click: Show the delete button
+	// On second click: Perform item delete
+	editList.on("click", ".delete", function() {
+		el = $(this);
+		if(el.hasClass("click")) {
+			var row = $(this).parent();
+			$.ajax({
+				url    :  "list/delete",
+				type   :  "POST",
+				context:  row,
+				data   :  "id=" + row.attr("id")
+			}).done( function(response) {
+				if(!response) {
+					$(this).remove();
+					noListCheck(editList);
+				} else {
+					notifier( response, "error" );
+				}
+			});
+		} else {
+			el.addClass("click").html("?");
+		}
+	});
 
 });

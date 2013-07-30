@@ -9,10 +9,10 @@
 	<meta name="description" content="A convenient location to store your lists, all saved to the cloud." />
 	<meta name="keywords" content="list, lists, app, organization" />
 
-	<title><?php echo (!empty($title)) ? $title . ' - ' : ''; ?>Lists App (alpha)</title>
+	<title>Lists App (alpha)</title>
 
 <!--	<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />-->
-	<link rel="stylesheet" href="<?php echo PUBLIC_HTML; ?>css/screen.css" type="text/css" media="screen,projection" />
+	<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen,projection" />
 
 </head>
 

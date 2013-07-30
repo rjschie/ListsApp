@@ -17,7 +17,7 @@ class DB
 			}
 			catch(PDOException $e)
 			{
-				die("Connectionn Error: " . $e->getMessage());
+				die("Connection Error: Please contact the site administrator.");    // ERROR make this point to my email
 			}
 		}
 		return self::$db;

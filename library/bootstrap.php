@@ -1,12 +1,12 @@
 <?php
 
-$controller = "index";
+$controller = "Index";
 $action = "index";
 $query = array();
 
-if( isset($_GET['load']) ) {
+if( isset($_GET['r']) ) {
 	$params = array();
-	$params = explode( '/', $_GET['load'] );
+	$params = explode( '/', $_GET['r'] );
 
 	$controller = ucwords( $params[0] );
 	array_shift( $params );
@@ -26,7 +26,7 @@ $controller .= 'Controller';
 $load = new $controller($modelName, $action);
 
 if( method_exists( $load, $action ) ) {
-	call_user_func_array( array( $load, $action ), array($query) );
+	call_user_func( array( $load, $action ), $query );
 } else {
-	die( 'Invalid method. Please check URL.' );
+	die( 'Invalid action. Please check URL.' ); // ERROR create proper error
 }
