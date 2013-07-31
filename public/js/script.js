@@ -75,16 +75,17 @@ $(function() {
 			url     :   "list/update/done",
 			type    :   "POST",
 			context :   thisLI,
-			data    :   "id=" + thisLI.attr("id")
-		}).done(function( response ){                   // Response is error message
-			if(!response) {
+			data    :   "id=" + thisLI.attr("id"),
+			dataType:   "json"
+		}).done(function( data ){                   // Response is error message
+			if(!data.err) {
 				if(!$(this).hasClass("crossout")) {
 					$(this).addClass("crossout");
 				} else {
 					$(this).removeClass("crossout");
 				}
 			} else {
-				notifier(response, "error");
+				notifier(data.message, "error");
 			}
 		});
 	});
@@ -98,10 +99,11 @@ $(function() {
 			$.ajax({
 				url     :   "list/update/order",
 				type    :   "POST",
-				data    :   postData
-			}).done(function(response) {
-				if(response) {
-					notifier( response, "error" );
+				data    :   postData,
+				dataType:   "json"
+			}).done(function(data) {
+				if(data.err) {
+					notifier( data.message, "error" );
 					editList.sortable("cancel");
 				}
 			});
@@ -116,11 +118,12 @@ $(function() {
 		$.ajax({
 			url     :   "list/add",
 			type    :   "POST",
-			data    :   "add-new-item-text=" +  thisInput.val()
-		}).done(function( response ){
+			data    :   "add-new-item-text=" +  thisInput.val(),
+			dataType:   "json"
+		}).done(function( data ){
 
-			var data = $.parseJSON( response );
-			if( data.err == 0 ) {
+//			var data = $.parseJSON( response );
+			if( !data.err ) {
 				editList.append("<li id='" + data.id + "' rel='" + data.newPos + "' class=''><span id='" + data.id + "'>" + data.text + "</span>" + appendTabs);
 				thisInput.val("");
 				noListCheck(editList);
@@ -142,13 +145,14 @@ $(function() {
 				url    :  "list/delete",
 				type   :  "POST",
 				context:  row,
-				data   :  "id=" + row.attr("id")
-			}).done( function(response) {
-				if(!response) {
+				data   :  "id=" + row.attr("id"),
+				dataType:   "json"
+			}).done( function(data) {
+				if(data.err) {
+					notifier( data.message, "error" );
+				} else {
 					$(this).remove();
 					noListCheck(editList);
-				} else {
-					notifier( response, "error" );
 				}
 			});
 		} else {

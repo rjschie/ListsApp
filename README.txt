@@ -16,9 +16,11 @@ TODO
 +	clean up database outputs (htmlspecialchars)
 +	AJAX user input check to a php script, return data to add to DOM
 +	If AJAX can't perform actions, show error message
-	Have jQuery and jQuery UI come from Google
++	Have jQuery and jQuery UI come from Google
 +	AJAX crumb
-	JSON Outputter
++	Error gatherer
++	JSON Outputter
+	Add "Clear Input" for add-item input
 
 
 	Check no-javascript runnable

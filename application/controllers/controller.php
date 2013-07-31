@@ -33,10 +33,21 @@ class Controller
 	protected function _isAjax( $action )
 	{
 		$headers = apache_request_headers();
-		if( !isset($headers['X-CSRF-Token']) || empty($headers['X-CSRF-Token']) ) {
+		if(
+		   !isset($headers['X-CSRF-Token'])
+		|| empty($headers['X-CSRF-Token'])
+		|| !Utils::verifyCSRFToken( $headers['X-CSRF-Token'], $action )
+		) {
+
+			if(isset($headers['X-Requested-With']) && $headers['X-Requested-With'] == 'XMLHttpRequest') {
+				$this->_template->errors[] = "Your session has expired.";
+				$this->_template->xhrOutput();
+			} else {
+				header( "Location: " . PUBLIC_HTML . "list" );
+			}
 			return false;
 		}
 
-		return Utils::verifyCSRFToken( $headers['X-CSRF-Token'], $action );
+		return true;
 	}
 }
