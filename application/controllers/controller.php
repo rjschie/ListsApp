@@ -34,13 +34,6 @@ class Controller
 	{
 		$headers = apache_request_headers();
 
-
-		// $this->_template->errors[] = "Your session has expired.";
-		$this->_template->errors[] = var_dump($_SESSION);
-		$this->_template->xhrOutput();
-		// $this->_template->output();
-
-		return;
 		if(
 		   !isset($headers['X-Csrf-Token'])
 		|| empty($headers['X-Csrf-Token'])
@@ -48,10 +41,8 @@ class Controller
 		) {
 
 			if(isset($headers['X-Requested-With']) && $headers['X-Requested-With'] == 'XMLHttpRequest') {
-				// $this->_template->errors[] = "Your session has expired.";
-				$this->_template->errors[] = var_dump($_SESSION);
+				$this->_template->errors[] = "Your session has expired.";
 				$this->_template->xhrOutput();
-				// $this->_template->output();
 			} else {
 				header( "Location: " . PUBLIC_HTML . "list" );
 			}
