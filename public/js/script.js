@@ -67,7 +67,7 @@ $(function() {
 
 	// Bind AJAX Sends with our CSRF Token
 	$(document).ajaxSend(function(event, xhr, settings) {
-		xhr.setRequestHeader("X-CSRF-Token", csrf_token);
+		xhr.setRequestHeader("X-Csrf-Token", csrf_token);
 	});
 
 
