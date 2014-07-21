@@ -22,7 +22,7 @@
 	<input type="hidden" id="csrf_token" name="csrf_token" value="<?php echo $csrf_token; ?>" />
 	<form id="form-add-new" class="hide" >
 		<div>
-			<input id="add-new-item-text" name="add-new-item-text" type="text" />
+			<input id="add-new-item-text" name="add-new-item-text" type="text" tabindex="1" placeholder="Add New Item" />
 			<input id="add-new-submit" type="submit" value="+" class="button" />
 		</div>
 	</form>

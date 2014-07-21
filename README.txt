@@ -3,9 +3,14 @@
           README - for me
 =====================================
 
+	Update the footer to have jquery loaded from Google
+		- Leave it as-is while testing to keep it totally local
+
 	Break our code! Test the crap out of it!
 		- database errors
 		- user input bad
+			- hacking
+			- tags
 		- No javascript?
 		- Go to locations you're not supposed to (e.g. lists/add or lists/delete)
 

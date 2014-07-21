@@ -62,18 +62,29 @@ class ListController extends Controller
 			return false;
 
 		if($query[0] == "done") {
+			$errmsg = "Could not mark list item as done.";
 			try {
 				if( !$this->_model->markDone( $_POST['id'] ) )
-					$this->_template->errors[] = "Could not mark list item as done.";
+					$this->_template->errors[] = $errmsg;
 			} catch(Exception $e) {
-				$this->_template->errors[] = Utils::filtErrMsg( "Could not mark list item as done.", $e );
+				$this->_template->errors[] = Utils::filtErrMsg( $errmsg, $e );
 			}
 		} elseif($query[0] == "order") {
+			$errmsg = "Could not update list positions.";
 			try {
 				if( !$this->_model->updateOrder( $_POST['id'] ) )
-					$this->_template->errors[] = "Could not update list positions.";
+					$this->_template->errors[] = $errmsg;
 			} catch(Exception $e) {
-				$this->_template->errors[] = Utils::filtErrMsg( "Could not update list positions.", $e );
+				$this->_template->errors[] = Utils::filtErrMsg( $errmsg, $e );
+			}
+		} elseif( $query[0] == "edit" ) {
+			$errmsg = "Could not update item text.";
+			try {
+				//TODO send more data
+				if( !$this->_model->editItem( $_POST['id'] ) )
+					$this->_template->errors[] = $errmsg;
+			} catch ( Exception $e ) {
+				$this->_template->errors[] = Utils::filtErrMsg( $errmsg, $e );
 			}
 		} else {
 			$this->_template->errors[] = "Invalid URL Query.";

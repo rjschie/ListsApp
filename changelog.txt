@@ -1,10 +1,20 @@
 Changelog
 ========================
 
+9/26/2013
+---------
+- Added edit list item function by clicking on text
+
+8/20/2013
+---------
+- Changed CSS for list input "add item" to change background color of sibling input "submit"
+
+
 7/31/2013
 ---------
 - Added JSON Outputter through Template->xhrOutput() method
 - Modified Controller->_isAjax() method to create its own error if not AJAX
+- Added Placeholder text in #add-new-item-text input
 
 7/30/2013
 ---------

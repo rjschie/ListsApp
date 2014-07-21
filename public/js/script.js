@@ -9,9 +9,11 @@ $(function() {
 
 	function noListCheck(obj)
 	{
-		if( obj.children().length > 0 ) {
+		if( obj.children().length > 0 )
+		{
 			$("#no-list").addClass("hide");
-		} else {
+		} else
+		{
 			$("#no-list").removeClass("hide");
 		}
 	}
@@ -20,7 +22,8 @@ $(function() {
 	{
 		var notifier = $("#notifier");
 		var typeClass = "";
-		if(type == "error") {
+		if(type == "error")
+		{
 			typeClass = "error";
 		}
 
@@ -90,6 +93,9 @@ $(function() {
 		});
 	});
 
+	// Make list item editable
+	//$(".list li span").on('click', function() { $(this).hide(); });
+	$(".list li span").editable('list/update/edit');
 
 	// Make the list sortable
 	editList.sortable({

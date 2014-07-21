@@ -46,6 +46,19 @@ class ListModel extends Model
 		return $sth->rowCount();
 	}
 
+	public function editItem( $id )
+	{
+
+		//TODO checks?
+
+		$this->_sql = "UPDATE listitems
+					   SET text = :text
+					   WHERE id=:id";
+
+		$sth = $this->_db->prepare( $this->_sql );
+		$sth->execute( array( "id" => $id ) );
+	}
+
 	public function markDone( $id )
 	{
 		$this->_sql = "UPDATE listitems

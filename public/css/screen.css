@@ -39,8 +39,11 @@ p  { margin: 0 0 6px 0; }
 
 #form-add-new { width: 590px; margin: auto;  }
 #form-add-new input[type="text"] { width: 468px; height: 40px; margin: 7px 0 7px 38px; padding-left: 40px; border: 2px solid #97d1cc; font-size: 16px; }
+#form-add-new input[type="text"]:focus { border-color: #f59b22; }
+#form-add-new input[type="text"]:focus + input[type="submit"] { background-color: #f59b22; }
+#form-add-new input[type="text"]:focus + input[type="submit"]:hover { background-color: #dd7c21; }
 #form-add-new input[type="submit"] { width: 40px; height: 44px; margin-left: -6px; padding: 0; background: #97d1cc; border: 0; border-radius: 0; color: white; font-size: 16px; font-weight: bold; cursor: pointer; }
-#form-add-new input[type="submit"]:hover { background-color: #35777b; }
+#form-add-new input[type="submit"]:hover { background-color: #86c0c5; }
 
 
 /*
@@ -69,7 +72,14 @@ p  { margin: 0 0 6px 0; }
 .list { width: 590px; margin: auto; list-style: none;  }
 .list li { position: relative; left: 38px; width: 530px; margin: 0 0 7px 0; padding: 0; }
 
-.list li span { display: block; z-index: 95; position: relative; width: auto; padding: 9px 8px 9px 40px; background: #97d1cc; color: #0e5473; }
+.list li span {
+	display: block;
+	z-index: 95;
+	position: relative;
+	width: auto;
+	padding: 9px 8px 9px 40px;
+	background: #97d1cc;
+	color: #0e5473; }
 
 .delete { display: block; z-index: 90; position: absolute; top: 0; right: -20px; width: 20px; padding: 4px 0 5px 0; background: #c43131; color: white; text-align: center; font-size: 24px; font-weight: bold; cursor: pointer; }
 .delete:hover { background: #ad0a00; }
@@ -151,3 +161,4 @@ li.crossout div.done:hover { background-position: 0 0; }
 	background: black;
 	opacity: 0.6;
 }
+
