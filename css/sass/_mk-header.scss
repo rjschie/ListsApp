@@ -8,15 +8,11 @@
 	left: 0;
 	right: 0;
 	margin: 0 auto;
-	width: 70%;
+	width: 100%;
 	height: rem-calc(69px);
-	padding-top: rem-calc(10px);
+	padding-top: rem-calc(15px);
 	background: $orange;
-//	border-bottom: 2px solid #ffc77a;
-	border-right: 2px solid #ffc77a;
-	border-left: 2px solid #ffc77a;
-	border-bottom: 4px solid $dark-orange;
-	border-radius: 0 0 4px 4px;
+	border-bottom: 2px solid #ffc77a;
 
 	transition: height .23s linear, padding-top .23s linear;
 
@@ -38,22 +34,11 @@
 
 	.border {
 		position: relative;
-		bottom: -2px;
-		height: 2px;
+		bottom: -4px;
+		height: 5px;
 		width: 100%;
 		margin: 0 auto;
-		background: #ffc77a;
-	}
-
-	.border {
-//		position: relative;
-//		bottom: -4px;
-//		height: 9px;
-//		width: 100%;
-//		margin: 0 auto;
-//		background: $dark-orange;
-//		border-radius: 0 0 3px 3px;
-//		border-top: 2px solid #ffc77a;
+		background: $dark-orange;
 	}
 
 	&.small {

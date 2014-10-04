@@ -42,14 +42,11 @@ body {
   left: 0;
   right: 0;
   margin: 0 auto;
-  width: 70%;
+  width: 100%;
   height: 4.3125rem;
-  padding-top: 0.625rem;
+  padding-top: 0.9375rem;
   background: #ffb44e;
-  border-right: 2px solid #ffc77a;
-  border-left: 2px solid #ffc77a;
-  border-bottom: 4px solid #de973d;
-  border-radius: 0 0 4px 4px;
+  border-bottom: 2px solid #ffc77a;
   -webkit-transition: height .23s linear, padding-top .23s linear;
           transition: height .23s linear, padding-top .23s linear; }
   .header a {
@@ -66,11 +63,11 @@ body {
       background-position: -9.75rem; }
   .header .border {
     position: relative;
-    bottom: -2px;
-    height: 2px;
+    bottom: -4px;
+    height: 5px;
     width: 100%;
     margin: 0 auto;
-    background: #ffc77a; }
+    background: #de973d; }
   .header.small {
     height: 2.1875rem;
     padding-top: 0.375rem; }
