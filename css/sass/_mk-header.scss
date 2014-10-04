@@ -1,0 +1,73 @@
+/**
+ * HEADER
+ */
+.header {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 70%;
+	height: rem-calc(69px);
+	padding-top: rem-calc(10px);
+	background: $orange;
+//	border-bottom: 2px solid #ffc77a;
+	border-right: 2px solid #ffc77a;
+	border-left: 2px solid #ffc77a;
+	border-bottom: 4px solid $dark-orange;
+	border-radius: 0 0 4px 4px;
+
+	transition: height .23s linear, padding-top .23s linear;
+
+	a {
+		display: block;
+		margin: 0 auto;
+		height: rem-calc(50px);
+		width: rem-calc(156px);
+		background: url("../otr/logo.png") no-repeat;
+		background-size: auto rem-calc(50px);
+		text-indent: -9999px;
+
+		transition: height .23s linear, width .23s linear, background-size .23s linear;
+
+		&:hover {
+			background-position: rem-calc(-156px);
+		}
+	}
+
+	.border {
+		position: relative;
+		bottom: -2px;
+		height: 2px;
+		width: 100%;
+		margin: 0 auto;
+		background: #ffc77a;
+	}
+
+	.border {
+//		position: relative;
+//		bottom: -4px;
+//		height: 9px;
+//		width: 100%;
+//		margin: 0 auto;
+//		background: $dark-orange;
+//		border-radius: 0 0 3px 3px;
+//		border-top: 2px solid #ffc77a;
+	}
+
+	&.small {
+		height: rem-calc(35px);
+		padding-top: rem-calc(6px);
+
+		a {
+			height: rem-calc(25px);
+			width: rem-calc(76px);
+			background-size: auto rem-calc(25px);
+
+			&:hover {
+				background-position: 0;
+			}
+		}
+	}
+}

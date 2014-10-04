@@ -1,1 +1,7 @@
 .idea/
+/.codekit-cache.DS_Store
+/_design
+.*.sw[op]
+.sass-cache
+*.scssc
+*.bowerrc

@@ -1,0 +1,18 @@
+/**
+ * Generals Section
+ */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0; padding: 0;
+	background: $off-white;
+	font: $rem-base/1.2 sans-serif;
+}
+
+.page-wrap {
+	position: relative;
+	top: 74px;
+}

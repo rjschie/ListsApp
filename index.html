@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" ng-app="listsApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Lists App</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/app.css">
+</head>
+<body ng-controller="ListCtrl">
+
+<div class="header">
+	<a href="./list">Lists App</a>
+	<div class="border"></div>
+</div>
+
+<div class="page-wrap">
+	<ul class="list ">
+		<li ng-repeat="item in items | orderBy:item.pos" 
+			ng-class="{crossout : item.done}">
+			<div class="delete"
+				 ng-class="{confirm : item.confirm}"
+				 ng-click="removeItem(item)" 
+				 ng-mouseleave="item.confirm=false"
+				 ng-bind-template="{{ item.confirm && '?' || '-' }}">
+				-
+			</div>
+			<div class='done' ng-click="checkDone(item)"></div>
+			<!--<div class='dragger'></div>-->
+			<span ng-bind-template="{{item.text}}"></span>
+		</li>
+	</ul>
+
+	<form id="form-add-new" class="" ng-submit="addItem()">
+		<div>
+			<input id="add-new-item-text" name="add-new-item-text" type="text"
+				   ng-model="itemText"
+				   tabindex="1" placeholder="Add New Item" />
+			<input id="add-new-submit" type="submit" value="+" class="button" />
+		</div>
+	</form>
+</div>
+<!--<pre ng-bind="items|json"></pre>-->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
+<script src="js/app.min.js"></script>
+</body>
+</html>

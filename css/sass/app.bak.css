@@ -1,0 +1,363 @@
+/*
+	RESET
+*/
+* {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+.clear {
+	clear: both;
+}
+img, a img {
+	border: none;
+}
+input {
+	outline: none;
+}
+
+
+
+.hide {
+	display: none;
+}
+
+/*
+	STRUCTURE
+*/
+body { 
+	background: url("../otr/stripe.png") #f4f4f4 ;
+	font: 16px/1.2 sans-serif;
+}
+#header { 
+	height: 60px;
+	background: #f59b22;
+}
+.page-wrap { 
+	width: auto;
+	margin: 90px auto;
+}
+
+
+/*
+	TYPOGRAPHY
+*/
+a  {
+	border-bottom: 1px dashed #35777b;
+	color: #35777b;
+	text-decoration: none;
+	outline: 0;
+}
+h1 {
+	margin: 0 0 8px 0;
+	font: bold 36px Helvetica, Sans-Serif;
+}
+h2 {
+	margin: 0 0 10px 0;
+}
+p  {
+	margin: 0 0 6px 0;
+}
+
+
+/*
+	FORM ELEMENTS
+*/
+.button {
+	padding: 5px 12px;
+	background: #f59b22;
+	border: 2px solid #f7a41b;
+	border-radius: 2px;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.button:hover {
+	background: #f07926;
+	border-color: #f07926;
+}
+.button.dark { 
+	background: #444;
+	border: 2px solid #555;
+	color: white;
+}
+.button.dark:hover { 
+	background: #f4f4f4;
+	color: #f59b22;
+}
+
+#form-add-new { 
+	width: 590px;
+	margin: auto;
+}
+#form-add-new input[type="text"] { 
+	width: 468px;
+	height: 40px;
+	margin: 7px 0 7px 38px;
+	padding-left: 40px;
+	border: 2px solid #97d1cc;
+	font-size: 16px;
+}
+#form-add-new input[type="text"]:focus {  border-color: #f59b22; }
+#form-add-new input[type="text"]:focus + input[type="submit"] { 
+	background-color: #f59b22;
+}
+#form-add-new input[type="text"]:focus + input[type="submit"]:hover { 
+	background-color: #dd7c21;
+}
+#form-add-new input[type="submit"] { 
+	width: 40px;
+	height: 44px;
+	margin-left: -6px;
+	padding: 0;
+	background: #97d1cc;
+	border: 0;
+	border-radius: 0;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+}
+#form-add-new input[type="submit"]:hover {
+	background-color: #86c0c5;
+}
+
+
+/*
+	SECTION: HEADER
+*/
+/*#header {
+	text-align: center;
+}*/
+#header .border { 
+	position: absolute;
+	bottom: -12px;
+	height: 10px;
+	width: 100%;
+	background: #444;
+	border: 0;
+	border-top: 2px solid #ececec;
+}
+#header h1 { 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 152px;
+	height: 50px;
+	text-indent: -9999px;
+}
+#header h1 a { 
+	display: block;
+	border: 0;
+	height: 45px;
+	width: 152px;
+	margin: -22px 0 0 -80px;
+	background: url("../otr/logo.png") no-repeat;
+	background-size: auto 50px;
+}
+#header h1 a:hover {
+	background-position: -156px 0;
+}
+
+/** Delete this section after alpha **/
+#header {
+	height: 70px;
+}
+#header p { 
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	 margin: auto;
+	color: white;
+	text-align: center;
+}
+
+#account {
+	float: right;
+	top: 10px;
+	right: 20px;
+}
+#account a {
+	top: 10px;
+	margin: 10px;
+}
+#account a.button {
+	padding: 8px 15px;
+}
+
+
+/*
+	LISTS
+*/
+.message { 
+	left: 38px;
+	width: 590px;
+	margin: 30px auto;
+	color: #0e5473;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+.list {
+	width: 590px;
+	margin: auto;
+	list-style: none;
+	 }
+.list li {
+	position: relative;
+	left: 38px;
+	width: 530px;
+	margin: 0 0 7px 0;
+	padding: 0;
+}
+
+.list li span {
+	display: block;
+	z-index: 95;
+	position: relative;
+	width: auto;
+	padding: 9px 8px 9px 40px;
+	background: #97d1cc;
+	color: #0e5473;
+}
+
+.delete { 
+	display: block;
+	z-index: 90;
+	position: absolute;
+	top: 0;
+	right: -20px;
+	width: 20px;
+	padding: 4px 0 5px 0;
+	background: #c43131;
+	color: white;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.delete:hover {
+	background: #ad0a00;
+}
+.delete.click {
+	right: -30px;
+	width: 30px;
+}
+
+.done { 
+	position: absolute;
+	top: -2px;
+	left: -41px;
+	width: 40px;
+	height: 40px;
+	background: url("../otr/tickbox.png") no-repeat;
+	cursor: pointer;
+}
+.done:hover {
+	background-position: -40px 0;
+}
+
+.dragger { 
+	z-index: 95;
+	
+	position: absolute;
+	
+	top: 9px;
+	
+	left: 5px;
+	
+	width: 30px;
+	
+	height: 20px;
+	
+	background: url("../otr/dragger.png") no-repeat;
+	
+	cursor: move;
+	
+}
+
+li.crossout {
+	opacity: 0.3;
+	 }
+li.crossout span {
+	color: #000;
+	font-style: italic;
+	text-decoration: line-through;
+}
+li.crossout div.done {
+	background-position: -40px 0;
+}
+li.crossout div.done:hover {
+	background-position: 0 0;
+}
+
+
+/*
+	NOTIFIER
+*/
+.notifier {
+	/*display: none;*/
+	z-index: 120;
+	position: fixed;
+	top: 100px;
+	right: -2px;
+	max-width: 320px;
+}
+.notifier p {
+	padding: 10px 20px;
+	background: #edda5b;
+	border: 2px solid #376578;
+	color: black;
+	line-height: 20px;
+	text-align: center;
+	word-wrap: break-word;
+	cursor: pointer;
+	opacity: 0.8;
+}
+.notifier p:hover {
+	opacity: 1;
+}
+.notifier p:after {
+	content: '(click to dismiss)';
+	display: block;
+	color: #555;
+	font-size: 0.6em;
+	text-align: left;
+}
+.notifier p.error {
+	background-color: #e18b8b;
+}
+
+
+/*
+	ERRORS
+*/
+#errors {
+	z-index: 500;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 70%;
+	margin: 50px auto;
+	padding: 20px;
+	background: #e18b8b;
+	border: 2px solid #ad0a00;
+
+}
+#errors p {
+	background: #ffd1d1;
+	padding: 10px;
+}
+#dimmer {
+	z-index: 300;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: black;
+	opacity: 0.6;
+}
+

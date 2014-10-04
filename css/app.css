@@ -1,0 +1,87 @@
+/**
+ * General Includes
+ */
+/**
+ * REM CALC
+ */
+/** Main **/
+/** Colors **/
+/**
+ * Markup
+ */
+/**
+ * MISC
+ */
+.hide {
+  display: none; }
+
+/**
+ * Generals Section
+ */
+* {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fafafa;
+  font: 13.33333px sans-serif; }
+
+.page-wrap {
+  position: relative;
+  top: 74px; }
+
+/**
+ * HEADER
+ */
+.header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 70%;
+  height: 4.3125rem;
+  padding-top: 0.625rem;
+  background: #ffb44e;
+  border-right: 2px solid #ffc77a;
+  border-left: 2px solid #ffc77a;
+  border-bottom: 4px solid #de973d;
+  border-radius: 0 0 4px 4px;
+  -webkit-transition: height .23s linear, padding-top .23s linear;
+          transition: height .23s linear, padding-top .23s linear; }
+  .header a {
+    display: block;
+    margin: 0 auto;
+    height: 3.125rem;
+    width: 9.75rem;
+    background: url("../otr/logo.png") no-repeat;
+    background-size: auto 3.125rem;
+    text-indent: -9999px;
+    -webkit-transition: height .23s linear, width .23s linear, background-size .23s linear;
+            transition: height .23s linear, width .23s linear, background-size .23s linear; }
+    .header a:hover {
+      background-position: -9.75rem; }
+  .header .border {
+    position: relative;
+    bottom: -2px;
+    height: 2px;
+    width: 100%;
+    margin: 0 auto;
+    background: #ffc77a; }
+  .header.small {
+    height: 2.1875rem;
+    padding-top: 0.375rem; }
+    .header.small a {
+      height: 1.5625rem;
+      width: 4.75rem;
+      background-size: auto 1.5625rem; }
+      .header.small a:hover {
+        background-position: 0; }
+
+/**
+ * List
+ */
+/* Simulate height */
